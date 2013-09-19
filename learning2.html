@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+<script src="http://documentcloud.github.com/underscore/underscore-min.js">
+</script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js">
+</script>
+<script>
+
+	var ChangeVar = Backbone.Model.extend({
+		// default values
+	defaults: {
+			title:'',
+			completed: false
+		},
+		initialize: function(){
+			console.log('This model has been initialized');
+			this.on('change:title', function(){
+			console.log('The title attribute has changed');
+			});
+		},
+		setTitle: function(newtitle){
+			this.set({title : newtitle});
+		}
+	});
+
+	var changeme = new ChangeVar();	
+	//Both the below statments are same
+	changeme.set({ title:'change'});
+	//changeme.set({'title','change'});
+	changeme.setTitle('Go fishing');
+
+	// the model does not trigger the event as we are not watching completed attribute.
+	changeme.set({completed:true});
+	
+
+</script>
+</body>
+</html>

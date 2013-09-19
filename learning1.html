@@ -58,8 +58,73 @@
 
 		});
 	console.log(JSON.stringify(tododefault1));
-	
+
 //*****
+var Todo = Backbone.Model.extend({
+  // Default todo attribute values
+  defaults: {
+    title: '',
+    completed: false
+  		}
+	});
+var todo1 = new Todo();
+console.log(todo1.get('title')); // empty string
+
+var todo2 = new Todo({
+title:'got from the method',
+completed:true });
+
+console.log(todo2.get('title')); // Retrieved with model's get() method.
+console.log(todo2.get('completed')); // true
+	
+
+//***** set and get Methods
+var Todo = Backbone.Model.extend({
+  // Default todo attribute values
+  defaults: {
+    title: '',
+    completed: false
+  		}
+	});
+
+var todo1 = new Todo();
+todo1.set({
+	title:'welcome to backbone',
+	completed:true
+})
+console.log(todo1.toJSON());
+//print as an object
+console.log(todo1.get('title'));
+//get only the title
+console.log(JSON.stringify(todo1));
+//gets as a string.
+
+
+
+
+var newTodo = Backbone.Model.extend({
+	defaults: {
+		title:'',
+		completed:false
+	},
+
+	intialize: function() {
+		console.log('This model has been initialized');
+		this.on('change',function(){
+			console.log('Values for this model have changed');
+		});
+		}
+	});
+
+
+var mynewTodo = new newTodo();
+mynewTodo.set('title','this is the first change');
+console.log('Title changed:' + mynewTodo.get('title'));
+
+mynewTodo.set({
+	title:'Changing more than one attribute also triggers the listener once',
+	completed:true
+});
 
 </script>
 </body>
