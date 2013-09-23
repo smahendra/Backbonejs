@@ -30,7 +30,19 @@ Things to remember:
 20. return this; - only to create the list once and avoiding repaints. Making views easily readable in other parents views.
 21. event Hash - Allows you to attach events to the 'el' or el-relative selectors. Current view object within the call back function.  
 	'eventName selector': 'callbackFunction'
-22.
+22. Backbone uses jQuery's .delegate() method - further goes to extend and refers always to the current view object within call back function.
+23. Backbone.Collections: Backbone are collection of set of models. 
+24. One can add and remove models using .add() and .remove().
+25. Adding models to a collection using {merge: true}, will merge the models () whereas the default will ingnore the models that comes at last.
+26. Models as objects are passed by reference.
+27. Collection.get() - this is a way to get an model from a Collection.
+28. id, cid, idAttribute
+When Model is created Backbone assigns/ automatically generates it a id called as client id (cid). This happens when data is not stored yet to the server.
+30. id - is either an integer or a string that is defined for the Model (usually by user).
+31. idAttribute - is the indentifying attribute of the Model returned by the Server.This is set by the Server. For example use it anytime when you want to use other forms as id's.
+32. once() method - Call the call back function only once for a change.
+33. Collection.reset() - Reset the entire collection. This will replace the contents of the Collection.You can use .reset() without any arguments to completly reset the Collection.One can listen to reset() events as we do with change events.
+34.  
 
 
 

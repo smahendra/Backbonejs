@@ -84,9 +84,6 @@ var firstView = Backbone.View.extend({
 	//set to an already existing on the page
 	var todosView = new todosView({el:$('#footer')});
 
-//***
-
-
 	var ListView = Backbone.View.extend({
 		render : function(){
 		this.$el.html(this.model.toJSON());
@@ -104,7 +101,6 @@ var firstView = Backbone.View.extend({
 
 
 	//Reuse the view as a sub-view
-
 	var ListView = Backbone.View.extend(
 	{
 		render: function(){
@@ -119,11 +115,67 @@ var firstView = Backbone.View.extend({
 	}
 );
 
+//****** Bind an event on the change function to rerender the view.
+
+var TodoView = Backbone.View.extend({
+	initialize: function () {
+		this.model.bind('change',_.bind(this.render,this));
+	}
+});
+
+//****** Model.Collection
+var ToDo = Backbone.Model.extend({
+	defaults : {
+		title : '',
+		completed : false
+	}
+});
+var ToDoCollection = Backbone.Collection.extend({
+	model:ToDo
+});
+
+//var myitem = new ToDo({ title:'welcome', id:'2'});
+//var todos = new ToDoCollection([myitem]);
+//console.log("the lenght of the collection is :" + todos.length);
+
+var a = new ToDo({ title: 'first variable'}),
+	b = new ToDo({ title: 'second variable'}),
+	c = new ToDo({ title: 'third variable'});
+
+var todos1 = new ToDoCollection([a,b]);
+	console.log('collection size now is:' + todos1.length);
+	todos1.add(c);
+	todos1.remove([a,b,c]);
+	console.log("the lenght of the collection is :" + todos1.length);
+
+//******
+
+var TodDosCollection = new Backbone.Collection();
+
+	TodDosCollection.on("add", function(todo){
+	console.log("I should " + todo.get("title") + ". Have I done it before? " + (todo.get("completed") ? 'Yeah!': 'No.' ));
+	});
+
+	TodosCollection.add([
+		{ title: 'go to Jamaica', completed: false },
+		{ title: 'go to China', completed: false },
+		{ title: 'go to Disneyland', completed: true }
+	]);
 
 
 
+//***
+
+var TodDosCollection1 = new Backbone.Collection();
+	TodDosCollection1.on("change", function(model){
+	console.log();
+	});
 
 
+
+		
+
+TodDosCollection.add([]);
 
 
 
