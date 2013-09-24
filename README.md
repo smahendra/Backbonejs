@@ -42,8 +42,30 @@ When Model is created Backbone assigns/ automatically generates it a id called a
 31. idAttribute - is the indentifying attribute of the Model returned by the Server.This is set by the Server. For example use it anytime when you want to use other forms as id's.
 32. once() method - Call the call back function only once for a change.
 33. Collection.reset() - Reset the entire collection. This will replace the contents of the Collection.You can use .reset() without any arguments to completly reset the Collection.One can listen to reset() events as we do with change events.
-34.  
+34. options.previousModels - Can be used with Collection.reset() to get hold of the previous models that are defined.
+35. update() method - This is available for Collections to update the models present in a collection. If there are new models an add event is triggered/ remove - for remove models, and if there are conflicts they are merged accordingly.
+36. Underscore utility functions: Avilable on Collections.
+	.forEach: Loop through the Collections to get the models/ attributes.
+	.sortBy(): Sort a collection on a specific attribute
+	.map(): Create a new collection by mapping each value in a list through a transformation function
+	.min()/.max(): Retrieve item with the min or max value of an attribute. For example try this on 'id'
+	pluck(): Extract a specific attribute.
+	filter(): Filter by an array of model IDs.
+	indexOf(): Return the item at a particular index within a collection
+	.any()/ .some() :  Confirm if any of the values in a collection pass an iterator truth test
+	size(): Return the size of a collection
+	isEmpty(): Determine whether a collection is empty
 
+	**** Operations on Models now
+Operations on object are aviable as methods on Models.
+	pick(): Extract a set of attributes from a model.
+	omit(): Extract all attributes from a model except those listed.
+	keys() and values(): Get lists of attribute names and values
+	pairs(): Get list of attributes as [key, value] pairs
+	invert(): Create object in which the values are keys and the attributes are values
+
+	
+	
 
 
 
